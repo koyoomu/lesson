@@ -1,0 +1,241 @@
+body {
+  font-weight: normal;
+  color: #333;
+  font-family: メイリオ;
+  font-size: 16px;
+  margin: 0 auto;
+}
+img {
+  width: 100%;
+}
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+.header_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+.header_right {
+  display: flex;
+  justify-content: space-between;
+}
+.header_btn01 {
+  display: block;
+  text-align: center;
+  padding: 25px;
+  color: #fff;
+  background-color: rgba(228, 58, 115, 0.98);
+  width: 250px;
+  margin-right: 10px;
+}
+.header_btn02 {
+  display: block;
+  text-align: center;
+  padding: 25px;
+  color: #fff;
+  background-color: green;
+  width: 250px;
+  margin-left: 10px;
+}
+.header02 ul{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px 40px;
+  color: #7d7d7d;
+}
+.main_title {
+  text-align: center;
+  padding-top: 80px;
+}
+.main_title h1{
+  font-size: 35px;
+  margin-bottom: 40px;
+}
+.main_title_p {
+  font-size: 22px;
+  border-bottom: 1px solid #dee7ec;
+  padding-bottom: 80px;
+}
+
+.form_item {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.form_item:nth-child(7) {
+  border-bottom: 1px solid #dee7ec;
+}
+.form_item_label {
+  margin-top: 8px;
+  margin-bottom: auto;
+  font-weight: bold;
+  font-size: 18px;
+  width: 25%;
+}
+.form_item_Label_Required {
+  font-size: 14px;
+  border-radius: 6px;
+  margin-left: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 40px;
+  display: inline-block;
+  text-align: center;
+  background-color: #f23b3b;
+  color: #fff;
+}
+.form_item_input {
+  border: 1px solid #dee7ec;
+  margin-left: 40px;
+  padding: 10px;
+  flex: 1;
+  width: 100%;
+  font-size: 18px;
+}
+.form_item_select {
+  border: 1px solid #dee7ec;
+  margin-left: 40px;
+  padding: 10px 50px 10px 10px;
+}
+.form_item_textarea {
+  border: 1px solid #dee7ec;
+  margin-left: 40px;
+  padding: 10px;
+  height: 200px;
+  flex: 1;
+  width: 100%;
+  font-size: 18px;
+}
+.form_item_checkbox {
+  margin-left: 40px;
+  font-size: 18px;
+}
+.underline {
+  text-decoration: underline;
+  letter-spacing: 0.5px;
+  margin-left: 5px;
+  color: #20511f;
+}
+.fa-sharp {
+  color: #20511f;
+}
+
+.contact_btn {
+  display: block;
+  width: 300px;
+  padding: 20px;
+  background-color: rgba(14, 132, 5, 0.98);
+  color: #fff;
+  text-align: center;
+  margin: 80px auto;
+}
+
+
+.main_footer {
+  padding: 70px;
+  background-color: #edededfc;
+}
+.main_footer_box {
+  display: flex;
+  justify-content: space-between;
+}
+.btn_box1 {
+  width: 48%;
+  padding: 80px;
+  background-color: #fff;
+  text-align: center;
+}
+.btn_box2 {
+  width: 48%;
+  padding: 80px;
+  background-color: #fff;
+  text-align: center;
+}
+.btn_box1 h2{
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.btn_box2 h2 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.btn1 {
+  display: block;
+  width: 300px;
+  padding: 20px;
+  background-color: rgba(228, 58, 115, 0.98);
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+}
+.btn2 {
+  display: block;
+  width: 300px;
+  padding: 20px;
+  background-color: rgba(14, 132, 5, 0.98);
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+}
+.main_footer {
+  margin-bottom: 600px;
+}
+.container {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.container li {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.title  {
+  font-size: 22px;
+  font-weight: bolder;
+}
+
+.border ul{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 100px 0;
+  font-size: 20px;
+}
+.block1 {
+  margin-bottom: 10px;
+}
+.border {
+  padding: 30px;
+  border-top: 1px solid  #333;
+  border-bottom: 1px solid #333;
+  border-color: rgba(37, 37, 37, 0.5);
+}
+
+footer p{
+  font-size: 18px;
+  padding: 20px;
+  text-align: center;
+}
+
+.error_message {
+  color: red;
+}
+.message_task8-2 {
+  color: black;
+  text-align: center;
+  font-size: large;
+}
+.submit_to_post {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: #20511f;
+  color: #333;
+  text-align: center;
+}
