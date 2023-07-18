@@ -222,8 +222,19 @@ footer p{
   text-align: center;
 }
 
+.checkpage h1 {
+  text-align: center;
+  color: #000;
+}
 .error_message {
   color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+.clear_contents p {
+  color: #000;
+  margin-top: 10px;
+  text-align: center;
 }
 .message_task8-2 {
   color: black;
@@ -232,10 +243,10 @@ footer p{
 }
 .submit_to_post {
   display: block;
-  width: 200px;
+  width: 100px;
   padding: 10px;
-  margin: 0 auto;
+  margin: 20px auto;
   background-color: #20511f;
-  color: #333;
+  color: #fff;
   text-align: center;
 }

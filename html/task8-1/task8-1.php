@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="sheet.css">
 </head>
 <body>
-  <h1>確認ページ</h1>
+  <div class="checkpage">
+    <h1>確認ページ</h1>
+  </div>
   <?php
    if (isset($_POST['submit'])) {
     $name = $_POST['name'];
@@ -54,12 +56,14 @@
       }
       echo "</div>";
     } else {
+      echo "<div class='clear_contents'>";
       echo "<p>お名前：".$name."</p>";
       echo "<p>フリガナ：".$kana."</p>";
       echo "<p>メールアドレス：".$email."</p>";
       echo "<p>電話番号：".$phone."</p>";
       echo "<p>問い合わせ項目：".$item."</p>";
       echo "<p>お問い合わせ内容：".$content."</p>";
+      echo "</div>";
       echo "
            <div class='submit_to_post'>
            <form action='task8-2.php' method='post'>
