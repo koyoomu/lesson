@@ -1,3 +1,68 @@
+ <?php
+   if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $kana = $_POST['kana'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $item = $_POST['item'];
+    $content = $_POST['content'];
+
+    $errors = [];
+
+    if (empty($name)) {
+      $errors[] = "お名前を入力してください。";
+    }
+    if (empty($kana)) {
+      $errors[] = "フリガナを入力してください。";
+    }
+    if (empty($email)) {
+      $errors[] = "メールアドレスを入力してください。";
+    } elseif (!strpos($email,'@')) {
+      $errors[] = "メールアドレスを正しく訂正してください。";
+    }
+    if (empty($phone)) {
+      $errors[] = "電話番号を入力してください。";
+    } elseif (strlen($phone) !== 10 && strlen($phone) !== 11) {
+      $errors[] = "電話番号10桁または11桁で入力してください。";
+    }
+    if (empty($item)) {
+      $errors[] = "項目を選択してください。";
+    }
+    if (empty($content)) {
+      $errors[] = "お問い合わせ内容を記入してください。";
+    }
+    if (empty($_POST['privacy_policy'])) {
+      $errors[] = "個人情報保護方針に同意してください。";
+    // checkboxのほうも設定してみたかったのですが、チェックを入れても赤字がでるようになっていますので、理由を伺いたいです。
+    }
+
+//     if (!empty($errors)) {
+//       echo "<div class='error_message'>";
+//       foreach ($errors as $error) {
+//         echo "<p>".$error."</p>";
+//       }
+//       echo "</div>";
+//     } else {
+//       echo "<div class='clear_contents'>";
+//       echo "<p>お名前：".$name."</p>";
+//       echo "<p>フリガナ：".$kana."</p>";
+//       echo "<p>メールアドレス：".$email."</p>";
+//       echo "<p>電話番号：".$phone."</p>";
+//       echo "<p>問い合わせ項目：".$item."</p>";
+//       echo "<p>お問い合わせ内容：".$content."</p>";
+//       echo "</div>";
+//       echo "
+//            <div class='submit_to_post'>
+//            <form action='task8-2.php' method='post'>
+//            <input type='submit' value='送信する'>
+//            </form>
+//            </div>
+// ";
+//     }
+//    }
+   ?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -42,24 +107,54 @@
         </p>
       </div>
     </div>
+    <?php
+    if (!empty($errors)) {
+      echo "<div class='error_message'>";
+      foreach ($errors as $error) {
+        echo "<p>".$error."</p>";
+      }
+      echo "</div>";
+    } 
+    else {
+      echo "<div class='clear_contents'>";
+      echo "<p>お名前：".$name."</p>";
+      echo "<p>フリガナ：".$kana."</p>";
+      echo "<p>メールアドレス：".$email."</p>";
+      echo "<p>電話番号：".$phone."</p>";
+      echo "<p>問い合わせ項目：".$item."</p>";
+      echo "<p>お問い合わせ内容：".$content."</p>";
+      echo "</div>";
+      echo "
+           <div class='submit_to_post'>
+           <form action='task8-2.php' method='post'>
+           <input type='submit' value='送信する'>
+           </form>
+           </div>";
+    }
+   }
+    ?>
     <div class="contact_form">
       <div class="wrapper">
-        <form action="task8-1.php" method="post">
+        <form action="<?php if (empty($errors)) {
+          echo "task8-2.php";
+        } else {
+          echo "contact.php";
+        } ?>" method="post">
         <div class="form_item">
             <p class="form_item_label">お名前<span class="form_item_Label_Required">必須</span></p>
-            <input type="text" class="form_item_input" name="name" placeholder="山田太郎">
+            <input type="text" class="form_item_input" name="name" placeholder="山田太郎" value="<?=$name;?>">
         </div>
         <div class="form_item">
             <p class="form_item_label">フリガナ<span class="form_item_Label_Required">必須</span></p>
-            <input type="text" class="form_item_input" name="kana" placeholder="ヤマダタロウ">
+            <input type="text" class="form_item_input" name="kana" placeholder="ヤマダタロウ" value="<?=$kana; ?>">
         </div>
         <div class="form_item">
             <p class="form_item_label">メールアドレス<span class="form_item_Label_Required">必須</span></p>
-            <input type="text" class="form_item_input" name="email" placeholder="info@fast-creademy.jp">
+            <input type="text" class="form_item_input" name="email" placeholder="info@fast-creademy.jp" value="<?=$email; ?>">
         </div>
         <div class="form_item">
             <p class="form_item_label">電話番号<span class="form_item_Label_Required">必須</span></p>
-            <input type="text" class="form_item_input" name="phone" placeholder="000-0000-0000">
+            <input type="text" class="form_item_input" name="phone" placeholder="000-0000-0000" value="<?=$phone; ?>">
         </div>
         <div class="form_item">
             <p class="form_item_label">問い合わせ項目<span class="form_item_Label_Required">必須</span></p>
@@ -71,7 +166,7 @@
         </div>
         <div class="form_item">
             <p class="form_item_label">お問い合わせ内容<span class="form_item_Label_Required">必須</span></p>
-            <textarea name="content" class="form_item_textarea" placeholder="こちらにお問い合わせ内容をご記入ください"></textarea>
+            <textarea name="content" class="form_item_textarea" placeholder="こちらにお問い合わせ内容をご記入ください" value="content"></textarea>
         </div>
         <div class="form_item">
             <p class="form_item_label">個人情報保護方針<span class="form_item_Label_Required">必須</span></p>

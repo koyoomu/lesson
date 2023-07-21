@@ -3,15 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>確認ページ</title>
-  <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="sheet.css">
+  <title>Document</title>
 </head>
 <body>
-  <div class="checkpage">
-    <h1>確認ページ</h1>
-  </div>
-  <?php
+<?php
    if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $kana = $_POST['kana'];
@@ -69,8 +64,7 @@
            <form action='task8-2.php' method='post'>
            <input type='submit' value='送信する'>
            </form>
-           </div>
-           ";
+           </div>";
     }
    }
    ?>
