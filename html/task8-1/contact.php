@@ -134,17 +134,17 @@
             <p class="form_item_label">問い合わせ項目<span class="form_item_Label_Required">必須</span></p>
             <select name="item" class="form_item_select">
               <option value="">選択してください</option>
-              <option value="質問">質問</option>
-              <option value="疑問">疑問</option>
+              <option value="質問" <?php if ($item === "質問"){ echo "selected";}?>>質問</option>
+              <option value="疑問" <?php if ($item === '疑問'){ echo 'selected'; }?>>疑問</option>
             </select>
         </div>
         <div class="form_item">
             <p class="form_item_label">お問い合わせ内容<span class="form_item_Label_Required">必須</span></p>
-            <textarea name="content" class="form_item_textarea" placeholder="こちらにお問い合わせ内容をご記入ください" value="<?=$content; ?>"></textarea>
+            <textarea name="content" class="form_item_textarea" placeholder="こちらにお問い合わせ内容をご記入ください"><?=$content;?></textarea>
         </div>
         <div class="form_item">
             <p class="form_item_label">個人情報保護方針<span class="form_item_Label_Required">必須</span></p>
-            <input type="checkbox" name="privacy_policy" class="form_item_checkbox">
+            <input type="checkbox" name="privacy_policy" class="form_item_checkbox"  <?php if (!empty($_POST['privacy_policy'])) echo 'checked'; ?>>
             <a href="link" class="underline" target="_blank">個人情報保護方針<span class="fa-solid fa-paperclip"></span>
             </a>に同意します。
         </div>
@@ -152,7 +152,7 @@
             <?php
             if (!empty($errors)) {
               echo "<input type='submit' name = 'submit' value='確認'>";
-            } elseif (empty($errors)) {
+            } else {
               echo "<input type='submit' name = 'submit' value='送信'>";
             }
             ?>
