@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if ($post['email'] === '') {
     $error['email'] = 'blank';
-  } elseif (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
+  } elseif (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)) { //mailのフィルター関数を使いました
     $error['email'] = 'email';
   }
 
@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (count($error) === 0) {
     // エラーがない→確認画面(task8-1.php)に移動する
     $_SESSION['form'] = $post;
+    // checkboxをチェックしたままtask8-1.phpに反映させる
     $_SESSION['form']['privacy_policy'] = !empty($_POST['privacy_policy']) ? true : false;
     header('location: task8-1.php');
     exit();
@@ -129,6 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             value="<?php echo htmlspecialchars($post['phone']); ?>">
             <?php if ($error['phone'] === 'blank'): ?>
               <p class="error_msg">※電話番号を入力してください</p>
+              <!-- ↓この部分を入れないとエラー文が反映されない -->
               <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && $error['phone'] === 'invalid'): ?>
                <p class="error_msg">※電話番号は10桁または11桁で入力してください</p>
                 <?php endif; ?>
@@ -141,6 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <option value="質問" <?php if ($post['item'] === "質問"){ echo "selected";}?>>質問</option>
               <option value="疑問" <?php if ($post['item'] === '疑問'){ echo 'selected'; }?>>疑問</option>
             </select>
+            <!-- ↓この部分を入れないとエラー文が反映されない -->
             <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && $error['item'] === 'blank'): ?>
                <p class="error_msg">※項目を選択してください</p>
              <?php endif; ?>
@@ -158,6 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             value="agree" <?php if (!empty($_POST['privacy_policy'])) echo 'checked'; ?>>
             <a href="link" class="underline" target="_blank">個人情報保護方針<span class="fa-solid fa-paperclip"></span>
             </a>に同意します。
+            <!-- ↓この部分を入れないとエラー文が反映されない -->
             <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && $error['privacy_policy'] === 'blank'): ?>
                  <p class="error_msg">※チェックを入れててください</p>
             <?php endif; ?>
