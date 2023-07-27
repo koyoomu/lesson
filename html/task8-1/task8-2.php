@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>送信完了</title>
   <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="sheet.css">
+  <link rel="stylesheet" href="task8-1.css">
 </head>
 <body>
   <div class="message_task8-2">

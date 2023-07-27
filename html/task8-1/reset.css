@@ -3,13 +3,13 @@
 /* Reset box-model and set borders */
 /* ============================================ */
 
-/* *,
+*,
 ::before,
 ::after {
   box-sizing: border-box;
   border-style: solid;
-  border-width: 1;
-} */
+  border-width: 0;
+}
 
 /* Document */
 /* ============================================ */
@@ -48,7 +48,7 @@ main {
 /* Vertical rhythm */
 /* ============================================ */
 
-/* p,
+p,
 table,
 blockquote,
 address,
@@ -58,7 +58,7 @@ form,
 figure,
 dl {
   margin: 0;
-} */
+}
 
 /* Headings */
 /* ============================================ */
