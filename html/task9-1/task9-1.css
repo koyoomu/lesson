@@ -55,6 +55,7 @@ img {
   font-size: 35px;
   margin-bottom: 40px;
 }
+
 .main_title_p {
   font-size: 22px;
   border-bottom: 1px solid #dee7ec;
@@ -242,6 +243,7 @@ footer p{
 
 .sent_complete_p {
   font-size: 22px;
-  border-bottom: blue;
+  border-bottom: 1px solid #dee7ec;
+  color: blue;
   padding-bottom: 80px;
 }

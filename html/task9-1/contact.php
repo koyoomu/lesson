@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>contactページ｜作成用</title>
   <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="task8-1.css">
+  <link rel="stylesheet" href="task9-1.css">
   <script src="https://kit.fontawesome.com/5f641c531c.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -130,9 +130,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             value="<?php echo htmlspecialchars($post['phone']); ?>">
             <?php if ($error['phone'] === 'blank'): ?>
               <p class="error_msg">※電話番号を入力してください</p>
-              
+              <?php endif; ?>
               <!-- ↓この部分を入れないとエラー文が反映されない -->
-            <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && $error['phone'] === 'invalid'): ?>
+              <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && $error['phone'] === 'invalid'): ?>
                <p class="error_msg">※電話番号は12桁または13桁で入力してください</p>
             <?php endif; ?>
         </div>

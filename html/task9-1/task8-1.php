@@ -1,55 +1,14 @@
 <?php
 session_start();
-$error = [];
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $post =  filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-  //form送信時にエラーチェック
-  if ($post['name'] === '') {
-    $error['name'] = 'blank';
-  }
-
-  if ($post['kana'] === '') {
-    $error['kana'] = 'blank';
-  }
-
-  if ($post['email'] === '') {
-    $error['email'] = 'blank';
-  } elseif (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)) { //mailのフィルター関数を使いました
-    $error['email'] = 'email';
-  }
-
-  if ($post['phone'] === '') {
-    $error['phone'] = 'blank';
-  } elseif (strlen($post['phone']) !== 12 && strlen($post['phone']) !== 13) {
-    $error['phone'] = 'invalid';
-  }
-
-  if ($post['item'] === '') {
-    $error['item'] = 'blank';
-  }
-
-  if ($post['content'] === '') {
-    $error['content'] = 'blank';
-  }
-
-  if (!isset($_POST['privacy_policy'])) {
-    $error['privacy_policy'] = 'blank';
-  }
-
-  if (count($error) === 0) {
-    // エラーがない→確認画面(task8-1.php)に移動する
-    $_SESSION['form'] = $post;
-    // checkboxをチェックしたままtask8-1.phpに反映させる
-    $_SESSION['form']['privacy_policy'] = !empty($_POST['privacy_policy']) ? true : false;
-    header('location: task8-1.php');
-    exit();
-  }
+// 入力画面からのアクセスがないと戻す
+if (!isset($_SESSION['form'])) {
+  header('Location: contact.php');
+  exit();
+} else {
+  $post = $_SESSION['form'];
 }
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -58,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>contactページ｜作成用</title>
   <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="task8-1.css">
+  <link rel="stylesheet" href="task9-1.css">
   <script src="https://kit.fontawesome.com/5f641c531c.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -96,45 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="contact_form">
       <div class="wrapper">
-        <form action="" method="POST">
+        <form action="task9-1.php" method="post">
         <div class="form_item">
             <p class="form_item_label">お名前<span class="form_item_Label_Required">必須</span></p>
-            <input type="text" name="name" class="form_item_input" placeholder="山田太郎"
-            value="<?php echo htmlspecialchars($post['name']); ?>">
-            <?php if ($error['name'] === 'blank'): ?>
-             <p class="error_msg">※お名前を入力してください。</p>
-          <?php endif; ?>
+            <p class="form_item_input"><?php echo htmlspecialchars($post['name']);?></p>
         </div>
         <div class="form_item">
             <p class="form_item_label">フリガナ<span class="form_item_Label_Required">必須</span></p>
-            <input type="text" name="kana" class="form_item_input" placeholder="ヤマダタロウ"
-            value="<?php echo htmlspecialchars($post['kana']); ?>">
-            <?php if ($error['kana'] === 'blank'): ?>
-             <p class="error_msg">※フリガナを入力してください</p>
-            <?php endif; ?>
+            <p class="form_item_input"><?php echo htmlspecialchars($post['kana']);?></p>
         </div>
         <div class="form_item">
             <p class="form_item_label">メールアドレス<span class="form_item_Label_Required">必須</span></p>
-            <input type="text" name="email" class="form_item_input" placeholder="info@fast-creademy.jp"
-            value="<?php echo htmlspecialchars($post['email']); ?>">
-            <?php if ($error['email'] === 'blank'): ?>
-             <p class="error_msg">※メールアドレスを入力してください</p>
-            <?php endif; ?>
-            <?php if ($error['email'] === 'email'): ?>
-             <p class="error_msg">※メールアドレスを正しく入力してください</p>
-            <?php endif; ?>
+            <p class="form_item_input"><?php echo htmlspecialchars($post['email']);?></p>
         </div>
         <div class="form_item">
             <p class="form_item_label">電話番号<span class="form_item_Label_Required">必須</span></p>
-            <input type="text" name="phone" class="form_item_input" placeholder="000-0000-0000"
-            value="<?php echo htmlspecialchars($post['phone']); ?>">
-            <?php if ($error['phone'] === 'blank'): ?>
-              <p class="error_msg">※電話番号を入力してください</p>
-              
-              <!-- ↓この部分を入れないとエラー文が反映されない -->
-            <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && $error['phone'] === 'invalid'): ?>
-               <p class="error_msg">※電話番号は12桁または13桁で入力してください</p>
-            <?php endif; ?>
+            <p class="form_item_input"><?php echo htmlspecialchars($post['phone']);?></p>
         </div>
         <div class="form_item">
             <p class="form_item_label">問い合わせ項目<span class="form_item_Label_Required">必須</span></p>
@@ -143,33 +79,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <option value="質問" <?php if ($post['item'] === "質問"){ echo "selected";}?>>質問</option>
               <option value="疑問" <?php if ($post['item'] === '疑問'){ echo 'selected'; }?>>疑問</option>
             </select>
-            <!-- ↓この部分を入れないとエラー文が反映されない -->
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && $error['item'] === 'blank'): ?>
-               <p class="error_msg">※項目を選択してください</p>
-             <?php endif; ?>
         </div>
         <div class="form_item">
             <p class="form_item_label">お問い合わせ内容<span class="form_item_Label_Required">必須</span></p>
-            <textarea name="content" class="form_item_textarea" placeholder="こちらにお問い合わせ内容をご記入ください"><?php echo htmlspecialchars($post['content']); ?></textarea>
-            <?php if ($error['content'] === 'blank'): ?>
-             <p class="error_msg">※問い合わせ内容を入力してください</p>
-            <?php endif; ?>
+            <p class="form_item_input"><?php echo nl2br(htmlspecialchars($post['content']));?></p>
         </div>
         <div class="form_item">
             <p class="form_item_label">個人情報保護方針<span class="form_item_Label_Required">必須</span></p>
             <input type="checkbox" name="privacy_policy" class="form_item_checkbox"
-            value="agree" <?php if (!empty($_POST['privacy_policy'])) echo 'checked'; ?>>
+            <?php if ($post['privacy_policy']) echo 'checked'; ?>>
             <a href="link" class="underline" target="_blank">個人情報保護方針<span class="fa-solid fa-paperclip"></span>
             </a>に同意します。
-            <!-- ↓この部分を入れないとエラー文が反映されない -->
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && $error['privacy_policy'] === 'blank'): ?>
-                 <p class="error_msg">※チェックを入れててください</p>
-            <?php endif; ?>
         </div>
           <div class="contact_btn">
-            <button type="submit" class="contact_btn_submit">確認</button>
+              <input type='submit' name = 'submit' value='送信'>
           </div>
-        </form>
+          </form>
       </div>
     </div>
     <div class="main_footer">
