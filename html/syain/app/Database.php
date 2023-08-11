@@ -80,5 +80,23 @@ class Database
     }
     return false;
   }
+
+  function updatesyain($id, $name, $age, $work, $old_id)
+{
+  try {
+    $stmt = $this->pdo->prepare("UPDATE syain SET id=?, name=?, age=?, work=? WHERE id=?");
+    $stmt->bindParam(1, $id,   PDO::PARAM_INT);
+    $stmt->bindParam(2, $name, PDO::PARAM_STR);
+    $stmt->bindParam(3, $age,  PDO::PARAM_INT);
+    $stmt->bindParam(4, $work, PDO::PARAM_STR);
+    $stmt->bindParam(5, $old_id, PDO::PARAM_INT);
+    $results = $stmt->execute();
+    return true;
+  } catch (PDOException $e) {
+    echo $e->getMessage() . '<br>';
+    exit;
+  }
+  return false;
+}
 }
 ?>

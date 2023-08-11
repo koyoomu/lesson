@@ -99,8 +99,28 @@ TABLE1;
 TABLE2;
   echo <<<TABLE3
      </table>
-     <a href="syain_updata.php">社員情報の更新</a><br>
-     <a href="syain_delete.php">社員情報の削除</a><br>
+     <a href="syain_update.php?id={$id['id']}">社員情報の更新</a><br>
+     <a href="syain_delete.php?id={$id['id']}">社員情報の削除</a><br>
 TABLE3;
+}
+
+function show_update($id, $name, $age, $work, $old_id) {
+  $error = get_error();
+  echo <<<FORM
+  <form action="post_data.php" method="post">
+      <p>社員番号</p>
+      <input type="text" name="id" placeholder="例）10001" value="{$id}">
+      <p>名前</p>
+      <input type="text" name="name" placeholder="例）中野 孝" value="{$name}">
+      <p>年齢</p>
+      <input type="text" name="age" placeholder="例）35" value="{$age}">
+      <p>勤務形態</p>
+      <input type="text" name="work" placeholder="例）社員" value="{$work}">
+      <p class="red">{$error}</p>
+      <input type="hidden" name="old_id" value="{$old_id}">
+      <input type="hidden" name="status" value="update">
+      <input type="submit" name="button" value="更新">
+  </form>
+FORM;
 }
 ?>
