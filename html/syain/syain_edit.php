@@ -1,7 +1,10 @@
 <?php
 require_once('common.php');
 
-show_top("社員情報の追加");
-show_create();
+$id = $_GET['id'];
+
+$member = $db->getsyain($id);
+show_top("社員情報");
+show_syain($member);
 show_down(true);
 ?>

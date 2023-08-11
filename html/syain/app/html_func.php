@@ -77,4 +77,30 @@ function show_create()
   $error = get_error();
   show_form("","","","","","create","登録");
 }
+
+function show_syain($id)
+{
+  echo <<<TABLE1
+    <table>
+      <tr>
+        <th>社員番号</th>
+        <th>名前</th>
+        <th>年齢</th>
+        <th>勤務形態</th>
+      </tr>
+TABLE1;
+    echo <<<TABLE2
+      <tr>
+        <td>{$id['id']}</td>
+        <td>{$id["name"]}</td>
+        <td>{$id["age"]}</td>
+        <td>{$id["work"]}</td>
+      </tr>
+TABLE2;
+  echo <<<TABLE3
+     </table>
+     <a href="syain_updata.php">社員情報の更新</a><br>
+     <a href="syain_delete.php">社員情報の削除</a><br>
+TABLE3;
+}
 ?>

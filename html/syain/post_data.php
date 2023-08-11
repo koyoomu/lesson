@@ -1,7 +1,7 @@
 <?php
 require_once('common.php');
-var_dump($_POST);
-exit;
+// var_dump($_POST);
+// exit;
 if (isset($_POST["status"])) {
   if (isset($_POST["id"])) {
     $id = $_POST["id"];
