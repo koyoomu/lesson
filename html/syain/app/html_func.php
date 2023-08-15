@@ -104,6 +104,18 @@ TABLE2;
 TABLE3;
 }
 
+// function show_operation($id)   operationを書こうとしましたが
+// {                              社員情報がうまく飛びません。
+//   echo <<<TABLE
+//   <tr>   
+//      <td><a href="syain_update.php?id={$id['id']}">社員情報の更新</a></td>
+//      <br>
+//      <td><a href="syain_delete.php?id={$id['id']}">社員情報の削除</a></td>
+//      <br>
+//   </tr>
+// TABLE;
+// }
+
 function show_update($id, $name, $age, $work, $old_id) {
   $error = get_error();
   echo <<<FORM
@@ -120,6 +132,26 @@ function show_update($id, $name, $age, $work, $old_id) {
       <input type="hidden" name="old_id" value="{$old_id}">
       <input type="hidden" name="status" value="update">
       <input type="submit" name="button" value="更新">
+  </form>
+FORM;
+}
+
+function show_delete($id, $name, $age, $work, $old_id) {
+  $error = get_error();
+  echo <<<FORM
+  <form action="post_data.php" method="post">
+      <p>社員番号</p>
+      <input type="text" name="id" placeholder="例）10001" value="{$id}">
+      <p>名前</p>
+      <input type="text" name="name" placeholder="例）中野 孝" value="{$name}">
+      <p>年齢</p>
+      <input type="text" name="age" placeholder="例）35" value="{$age}">
+      <p>勤務形態</p>
+      <input type="text" name="work" placeholder="例）社員" value="{$work}">
+      <p class="red">{$error}</p>
+      <input type="hidden" name="old_id" value="{$old_id}">
+      <input type="hidden" name="status" value="delete">
+      <input type="submit" name="button" value="削除">
   </form>
 FORM;
 }

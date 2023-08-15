@@ -54,5 +54,32 @@ if (isset($_POST["status"])) {
     header("Location: index.php");
     exit();
   }
+  // if ($_POST["status"] == "delete") {
+  //   if ($db->deletesyain($id, $name, $age, $work, $old_id) == false) {
+  //     $error = "DBエラー";
+  //     header("Location: syain_delete.php?error={$error}");
+  //     exit();
+  //   }
+  //   header("Location: index.php");
+  //   exit();
+  // }
   
+  if ($_POST["status"] == "delete") {
+    if (check_input($id, $name, $age, $work, $error) == false) {
+      header("Location: syain_delete.php?error={$error}");
+      exit();
+    }
+    if ($db->idexist($id) == false) {
+      $error = "IDが見つかりません";
+      header("Location: syain_delete.php?error={$error}");
+      exit();
+    }
+    if ($db->deletesyain($id, $name, $age, $work, $old_id) == false) {
+      $error = "DBエラー";
+      header("Location: syain_delete.php?error={$error}");
+      exit();
+    }
+    header("Location: index.php");
+    exit();
+  }
 }
